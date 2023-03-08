@@ -1,13 +1,6 @@
 import Game from "./Wolfie2D/Loop/Game";
-import MainMenu from "./hw3/Scenes/MainMenu";
-import RegistryManager from "./Wolfie2D/Registry/RegistryManager";
-
-import { PlayerInput } from "./hw3/AI/Player/PlayerController";
-import AStarDemoScene from "./hw3/Scenes/AstarDemoScene";
-import HW3Scene from "./hw3/Scenes/HW3Scene";
-import GuardDemoScene from "./hw3/Scenes/GuardDemoScene";
-import AstarDemoScene from "./hw3/Scenes/AstarDemoScene";
-import MainHW3Scene from "./hw3/Scenes/MainHW3Scene";
+import MainMenu from "./hw4/Scenes/MainMenu";
+import { PlayerInput } from "./hw4/AI/Player/PlayerController";
 
 // The main function is your entrypoint into Wolfie2D. Specify your first scene and any options here.
 (function main(){

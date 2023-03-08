@@ -6,7 +6,7 @@ import Healthpack from "../GameSystems/ItemSystem/Items/Healthpack";
 import Battler from "../GameSystems/BattleSystem/Battler";
 
 
-export default abstract class HW3Scene extends Scene {
+export default abstract class HW4Scene extends Scene {
 
     public abstract getBattlers(): Battler[];
 

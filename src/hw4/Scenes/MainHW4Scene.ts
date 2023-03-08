@@ -29,18 +29,18 @@ import Inventory from "../GameSystems/ItemSystem/Inventory";
 import Item from "../GameSystems/ItemSystem/Item";
 import Healthpack from "../GameSystems/ItemSystem/Items/Healthpack";
 import LaserGun from "../GameSystems/ItemSystem/Items/LaserGun";
-import { ClosestPositioned } from "../GameSystems/Searching/HW3Reducers";
+import { ClosestPositioned } from "../GameSystems/Searching/HW4Reducers";
 import BasicTargetable from "../GameSystems/Targeting/BasicTargetable";
 import Position from "../GameSystems/Targeting/Position";
 import AstarStrategy from "../Pathfinding/AstarStrategy";
-import HW3Scene from "./HW3Scene";
+import HW4Scene from "./HW4Scene";
 
 const BattlerGroups = {
     RED: 1,
     BLUE: 2
 } as const;
 
-export default class MainHW3Scene extends HW3Scene {
+export default class MainHW4Scene extends HW4Scene {
 
     /** GameSystems in the HW3 Scene */
     private inventoryHud: InventoryHUD;
