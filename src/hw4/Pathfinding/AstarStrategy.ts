@@ -100,10 +100,10 @@ export default class AstarStrategy extends NavPathStrat {
                     }
                 }
                 else if(close_index >= 0){
-                    // If already in close list, ignore
-                    // if(cost < open[close_index].gcost){
-                    //     open[close_index].gcost = cost;
-                    //     open[close_index].parent = successor;
+                    // // If already in close list, replace only if lower cost
+                    // if(cost < close[close_index].gcost){
+                    //     close[close_index].gcost = cost;
+                    //     close[close_index].parent = successor;
                     // }
                 }
                 else {
@@ -117,9 +117,7 @@ export default class AstarStrategy extends NavPathStrat {
             close.push(current);
 
             let curr_index = open.findIndex((node) => node.node == current.node)
-            open.splice(curr_index, 1);
-            
-            console.log("Open", open);
+            open.splice(curr_index, 1);            
         }
         let positions = this.mesh.graph.positions;
 

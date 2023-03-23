@@ -5,8 +5,8 @@ import GameEvent from "../../../../Wolfie2D/Events/GameEvent";
 import Idle from "../NPCActions/GotoAction";
 import { TargetExists } from "../NPCStatuses/TargetExists";
 import BasicFinder from "../../../GameSystems/Searching/BasicFinder";
-import { ClosestPositioned } from "../../../GameSystems/Searching/HW4Reducers";
-import { BattlerActiveFilter, BattlerGroupFilter, BattlerHealthFilter, ItemFilter, RangeFilter, VisibleItemFilter } from "../../../GameSystems/Searching/HW4Filters";
+import { ClosestPositioned, LowestHealthBattler } from "../../../GameSystems/Searching/HW4Reducers";
+import { AllyFilter, BattlerActiveFilter, BattlerGroupFilter, BattlerHealthFilter, ItemFilter, RangeFilter, VisibleItemFilter } from "../../../GameSystems/Searching/HW4Filters";
 import PickupItem from "../NPCActions/PickupItem";
 import UseHealthpack from "../NPCActions/UseHealthpack";
 import Healthpack from "../../../GameSystems/ItemSystem/Items/Healthpack";
@@ -45,14 +45,37 @@ export default class HealerBehavior extends NPCBehavior  {
         let lowhealthAlly = new BasicFinder<Battler>(null, BattlerActiveFilter(), BattlerGroupFilter([owner.battleGroup]));
         this.addStatus(HealerStatuses.ALLY_EXISTS, new TargetExists(scene.getBattlers(), lowhealthAlly));
         
-        /* ######### Add all healer actions ######## */
-
+        /** ######### Add all healer actions ######## 
+         * Pickup Health Pack
+         * Use Health Pack
+         * Idle
+        */
         // TODO configure the rest of the healer actions
+        // Pickup health pack
+        // let pickup = new PickupItem(this, this.owner);
+        // pickup.targets = scene.getHealthpacks();
+        // pickup.targetFinder = new BasicFinder<Item>(ClosestPositioned(this.owner), VisibleItemFilter(), ItemFilter(Healthpack));
+        // pickup.addPrecondition(HealerStatuses.HPACK_EXISTS);
+        // pickup.addEffect(HealerStatuses.HAS_HPACK);
+        // pickup.cost = 5;
+        // this.addState(HealerActions.PICKUP_HPACK, pickup);
+
+        // let enemyBattlerFinder = new BasicFinder<Battler>(null, BattlerActiveFilter(), EnemyFilter(this.owner), RangeFilter(this.target, 0, this.range*this.range))
+
+        // Use health pack
+        // let useHealth = new UseHealthpack(this, this.owner);
+        // useHealth.targets = scene.getBattlers();
+        // useHealth.targetFinder = new BasicFinder<Battler>(null, AllyFilter(this.owner), BattlerHealthFilter(0, 9));
+        // useHealth.addPrecondition(HealerStatuses.ALLY_EXISTS);
+        // useHealth.addPrecondition(HealerStatuses.HAS_HPACK);
+        // useHealth.addEffect(HealerStatuses.GOAL);
+        // useHealth.cost = 1;
+        // this.addState(HealerActions.USE_HPACK, useHealth);
 
         // Idle action
         let idle = new Idle(this, this.owner);
         idle.addEffect(HealerStatuses.GOAL);
-        idle.cost = 100;
+        idle.cost = 1000;
         this.addState(HealerActions.IDLE, idle);
 
         /* ######### Set the healers goal ######## */
