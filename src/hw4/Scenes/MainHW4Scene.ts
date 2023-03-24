@@ -337,7 +337,7 @@ export default class MainHW4Scene extends HW4Scene {
 
             npc.battleGroup = 2;
             npc.speed = 10;
-            npc.health = 1;
+            npc.health = 10;
             npc.maxHealth = 10;
             npc.navkey = "navmesh";
 
